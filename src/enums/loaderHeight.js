@@ -1,0 +1,5 @@
+export const LoaderHeight = {
+  FULL_SCREEN: "FULL_SCREEN",
+  HALF_SCREEN: "HALF_SCREEN",
+  QUARTER_SCREEN: "QUARTER_SCREEN",
+};
