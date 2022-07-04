@@ -8,74 +8,71 @@
 // import questions from "../questions.json";
 
 // class Quiz extends React.Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             questionNumber: 0,
-//             numCorrect: 0,
-//             statusShown: false,
-//             currentQuestionCorrect: false,
-//         };
-//         this.questions = questions[this.props.subject];
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       questionNumber: 0,
+//       numCorrect: 0,
+//       statusShown: false,
+//       currentQuestionCorrect: false,
+//     };
+//     this.questions = questions[this.props.subject];
 
-//         this.handleClick = this.handleClick.bind(this);
+//     this.handleClick = this.handleClick.bind(this);
+//   }
+
+//   handleClick(answer) {
+//     this.setState({ statusShown: true });
+
+//     const correctAnswer =
+//       this.questions[this.state.questionNumber].correctAnswer;
+
+//     answer === correctAnswer
+//       ? this.setStatus("correct")
+//       : this.setStatus("wrong");
+//   }
+
+//   setStatus(status) {
+//     if (status === "correct") {
+//       this.setState((state) => ({
+//         numCorrect: state.numCorrect + 1,
+//         currentQuestionCorrect: true,
+//       }));
+//     } else {
+//       this.setState({ currentQuestionCorrect: false });
 //     }
 
-//     handleClick(answer) {
-//         this.setState({ statusShown: true });
+//     setTimeout(() => this.switchQuestion(), 750);
+//   }
 
-//         const correctAnswer =
-//             this.questions[this.state.questionNumber].correctAnswer;
+//   switchQuestion() {
+//     this.setState((state) => ({
+//       statusShown: false,
+//       questionNumber:
+//         state.questionNumber < 4 ? state.questionNumber + 1 : false,
+//     }));
+//   }
 
-//         answer === correctAnswer
-//             ? this.setStatus("correct")
-//             : this.setStatus("wrong");
+//   render() {
+//     if (this.state.questionNumber !== false) {
+//       const question = this.questions[this.state.questionNumber].question;
+//       const answers = this.questions[this.state.questionNumber].answers;
+
+//       return (
+//         <div>
+//           <Header>{question}</Header>
+//           <div className="flex justify-center mt-16">
+//             <AnswerCard answers={answers} onClick={this.handleClick} />
+//           </div>
+//           {this.state.statusShown && (
+//             <Status correct={this.state.currentQuestionCorrect} />
+//           )}
+//         </div>
+//       );
 //     }
 
-//     setStatus(status) {
-//         if (status === "correct") {
-//             this.setState(state => ({
-//                 numCorrect: state.numCorrect + 1,
-//                 currentQuestionCorrect: true,
-//             }));
-//         } else {
-//             this.setState({ currentQuestionCorrect: false });
-//         }
-
-//         setTimeout(() => this.switchQuestion(), 750);
-//     }
-
-//     switchQuestion() {
-//         this.setState(state => ({
-//             statusShown: false,
-//             questionNumber:
-//                 state.questionNumber < 4 ? state.questionNumber + 1 : false,
-//         }));
-//     }
-
-//     render() {
-//         if (this.state.questionNumber !== false) {
-//             const question = this.questions[this.state.questionNumber].question;
-//             const answers = this.questions[this.state.questionNumber].answers;
-
-//             return (
-//                 <div>
-//                     <Header>{question}</Header>
-//                     <div className="flex justify-center mt-16">
-//                         <AnswerCard
-//                             answers={answers}
-//                             onClick={this.handleClick}
-//                         />
-//                     </div>
-//                     {this.state.statusShown && (
-//                         <Status correct={this.state.currentQuestionCorrect} />
-//                     )}
-//                 </div>
-//             );
-//         }
-
-//         return <EndQuiz numCorrect={this.state.numCorrect} />;
-//     }
+//     return <EndQuiz numCorrect={this.state.numCorrect} />;
+//   }
 // }
 
 // export default Quiz;
