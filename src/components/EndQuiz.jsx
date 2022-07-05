@@ -1,28 +1,25 @@
-function EndQuiz(props) {
-    const percentCorrect = (100 * props.numCorrect) / 5;
+import { setNewDocument, updateDocumentData } from "firebase-setup/queries";
+import { useDappContext } from "provider/userStateProvider";
+import { useEffect } from "react";
+const EndQuiz = ({ numCorrect, numberOfQuestions }) => {
+  const { userEmail } = useDappContext();
+  const percentCorrect = parseFloat(
+    (100 * numCorrect) / numberOfQuestions
+  ).toPrecision(2);
+  let header = (
+    <h1 className="text-3xl font-bold  text-center text-transparent mx-4 bg-clip-text bg-gradient-to-r from-metamaskStart to-metmaskEnd">
+      <span>You got {`${numCorrect}/${numberOfQuestions} correct `}</span>
+      <span>Head to the Sixt+ booth to claim your reward!</span>
+    </h1>
+  );
+  useEffect(() => {
+    setNewDocument("results", userEmail, {
+      score: numCorrect,
+      numberOfQuestions: numberOfQuestions,
+    });
+  }, []);
 
-    let header;
-    if (percentCorrect >= 60) {
-        header = (
-            <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-300 text-center">
-                Well done! You got{" "}
-                <span className="text-green-500">{percentCorrect}%!</span>
-            </h1>
-        );
-    } else {
-        header = (
-            <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-300 text-center">
-                You got <span className="text-red-500">{percentCorrect}%.</span>{" "}
-                Better luck next time!
-            </h1>
-        );
-    }
-
-    return (
-        <div className="flex justify-center items-center h-screen">
-            {header}
-        </div>
-    );
-}
+  return <div className="flex justify-center items-center ">{header}</div>;
+};
 
 export default EndQuiz;

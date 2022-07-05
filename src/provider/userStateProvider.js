@@ -9,6 +9,7 @@ const DappProvider = ({ children }) => {
   const [statusShown, setStatusShown] = useState(false);
   const [currentQuestionCorrect, setCurrentQuestionCorrect] = useState(false);
   const [questions, setQuestions] = useState([]);
+  const [userEmail, setUserEmail] = useState("");
 
   useEffect(() => {
     const unsubscribe = () => {
@@ -36,6 +37,8 @@ const DappProvider = ({ children }) => {
         setStatusShown,
         currentQuestionCorrect,
         setCurrentQuestionCorrect,
+        userEmail,
+        setUserEmail,
       }}
     >
       {children}

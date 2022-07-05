@@ -1,11 +1,16 @@
 const Answer = ({ answer, onClick, index }) => {
   return (
     <div
-      className="bg-gray-100  mx-6 h-16 w-auto mb-4 rounded-md flex items-center"
+      className="bg-gradient-to-r from-metamaskStart to-metmaskEnd text-white  mx-6 h-16 w-auto mb-4 rounded-md flex items-center"
       onClick={() => onClick(answer, index)}
     >
-      <input type="radio" name="answer" value={answer} className="ml-5 " />
-      <label className="text-gray-700  text-lg ml-4">{answer}</label>
+      <input
+        type="radio"
+        name="answer"
+        value={answer}
+        className="ml-5 text-white "
+      />
+      <label className="text-white  text-lg ml-4">{answer}</label>
     </div>
   );
 };
